@@ -59,9 +59,20 @@ let project = Project(name: "SampleProject",
                                             "/Users/ghaithalnajjar/Downloads/SampleProject/iOSApp/CountryWiki/Modules/Countries/Models/CountriesProvider+CountriesProviderProtocol.swift",
                                             
                                       ],
+                                  scripts: [
+                                    .post(
+                                      script: """
+                                              . ../BuildTools/swiftlint.sh
+                                              swiftlintWrapped ../BuildTools/
+                                              """,
+                                      name: "Swiftlint",
+                                      basedOnDependencyAnalysis: true,
+                                      shellPath: "/bin/zsh"
+                                    )
+                                  ],
                                   dependencies: [
-                                   // .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0-rc.2")
-                                             ]
+                                    // .package(url: "https://github.com/realm/SwiftLint.git", from: "0.51.0-rc.2")
+                                  ]
                                   
                                      /* preActions: [
                                                       TargetAction.tool(
